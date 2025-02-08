@@ -306,7 +306,9 @@ orth2 = numpy.divide(orth2, math.sqrt(orth2[0]**2 + orth2[1]**2 + orth2[2]**2))
 #fuck
 #let's just pretend it's not a problem for now
 lmin = 1.414*min(trimLabcolors[:,0])#This is where removing the outliers before really helps
+lmin = 0 if lmin < 0 else lmin#Cap minimum lightness at zero
 lmax = 1.414*max(trimLabcolors[:,0])#And then we just multiply by sqrt(2) like we know what we're doing.
+lax = 1 if lmax > 1 else lmax#Cap maximum lightness at 1
 amin = min(trimLabcolors[:,1])
 amax = max(trimLabcolors[:,1])
 bmin = min(trimLabcolors[:,2])
